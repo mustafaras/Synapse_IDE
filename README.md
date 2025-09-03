@@ -6,6 +6,8 @@
 
 <h1 align="center">Synapse IDE — v.X.0.0 🚀🧠</h1>
 
+<img width="1083" height="188" alt="4" src="https://github.com/user-attachments/assets/c0567018-1e5f-47e9-be93-3fa5f29edb58" />
+
 <p align="center">
   <a href="https://react.dev" target="_blank"><img alt="React" src="https://img.shields.io/badge/React-19-61dafb?logo=react&logoColor=061a23"></a>
   <a href="https://vite.dev" target="_blank"><img alt="Vite" src="https://img.shields.io/badge/Vite-6-646cff?logo=vite&logoColor=white"></a>
@@ -54,6 +56,8 @@ An in-browser IDE built with React + TypeScript and powered by Monaco. It includ
 ---
 
 ## 1) Overview and highlights ✨
+<img width="2549" height="1269" alt="3" src="https://github.com/user-attachments/assets/a868fa75-e379-4bbe-b457-dc4ee776d03a" />
+
 
 Synapse IDE is a client-first, browser-based IDE shell featuring:
 
@@ -112,10 +116,11 @@ Useful scripts
 - `e2e:ci` — line reporter for CI
 - `format` / `format:check` — Prettier
 - `release:*` — version + changelog helpers
-
 ---
+Note: Do not forget extract src.zip
 
 ## 3) Providers, endpoints, streaming, and models 🤖
+<img width="2551" height="1297" alt="1" src="https://github.com/user-attachments/assets/cc212f69-15d9-4c84-926e-9dae49631087" />
 
 Provider adapters: `src/services/ai/adapters/index.ts`
 
@@ -137,6 +142,7 @@ Notes
 - The adapters normalize events to a common stream format: start → delta* → usage? → done | error.
 
 ---
+<img width="2558" height="1303" alt="2" src="https://github.com/user-attachments/assets/2c494f06-475e-45d6-a208-2d81b0a1d2e2" />
 
 ## 🧬 Model Capability Matrix (auto-generated)
 
@@ -798,4 +804,5 @@ Testing artifacts
 - `@radix-ui/react-*` for primitives (dialog, dropdown, tabs, toast)
 - `lucide-react` for icons
 - `framer-motion` for motion primitives
+
 
