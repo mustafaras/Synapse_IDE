@@ -1,0 +1,123 @@
+SYNAPSE IDE – ADVANCED HOMEPAGE LAYOUT PROMPT SERIES (3-THEME SUPPORT + NEURAL BACKGROUND)
+
+This prompt list is tailored for VS Code Copilot Sonnet and aims to restructure SynapseIDE’s homepage with a clear, responsive layout using design principles (Gestalt, Bauhaus). It preserves current color/icon schemes across light, dark, and neutral themes while introducing a dynamic "neural-like" animated background.
+
+---
+
+✅ 1. Remove asymmetry in layout  
+Align the left branding block and right feature stack within a 12-column grid. Set branding to span columns 1–6, and the stack to 7–12. Use flexbox fallback for smaller viewports. This creates structural harmony and resolves perceptual imbalance (Gestalt proximity + alignment).
+
+✅ 2. Center the brand content vertically  
+Vertically center the logo and description block within their column using `justify-content: center` and `min-height: 100vh`. This improves visual gravity and reflects Bauhaus balance.
+
+✅ 3. Add animated neural background behind logo  
+Create a canvas or SVG animation using dots and connecting lines (simulating a synapse network). Animate slow pulsation and node drift. Place it behind the logo section, z-index below main content. Respect motion-reduction preferences.
+
+✅ 4. Improve typography rhythm  
+Set font-size of subtitle to 1rem, line-height to 1.6, and `max-width: 360px`. Add `letter-spacing: 0.015em`. This enhances scanning, rhythm, and flow.
+
+✅ 5. Responsive collapse for card stack  
+On screens below 768px, collapse feature cards into an accordion or tab view. Each should toggle open with a smooth height animation. This improves accessibility without sacrificing detail.
+
+✅ 6. Card visual hierarchy  
+Increase card title font-weight to 600 and add `margin-bottom: 0.25rem` before subtitle. Move tags to bottom with reduced opacity until hover. This defines a reading sequence.
+
+✅ 7. Animate cards with entry motion  
+Use staggered fade-up animation (`@keyframes fadeInUp`) on card mount. Delay each card by 100ms. This adds temporal structure to reading behavior (Gestalt continuity).
+
+✅ 8. Add backdrop blur consistency  
+Apply consistent glassmorphism: `backdrop-filter: blur(10px); background: rgba(255,255,255,0.05);` to all surfaces including Hero cards, Feature cards, and Launch button. This unifies surfaces visually.
+
+✅ 9. Fix Launch IDE button interaction  
+Replace permanent glow with `hover: box-shadow` behavior only. Add smooth `transform: scale(1.03)` on hover. This keeps the CTA visible without being intrusive.
+
+✅ 10. Add visual break between brand and card stack  
+Insert a vertical divider (thin translucent line or blurred edge) between brand and feature stack at large screen sizes. Fade this element out on mobile.
+
+✅ 11. Maintain per-theme accent and icon consistency  
+Ensure current accent colors and icons persist in each mode:
+- Light → Blue (#3B82F6)
+- Neutral → Amber (#FBBF24)
+- Dark → Violet (#8B5CF6)
+Icons: keep Lightning, Brain, Collaboration, Puzzle
+
+✅ 12. Apply smooth theme transitions  
+Wrap entire page in a `div` with transition on background, color, and box-shadow. Set `transition: all 0.3s ease-in-out;`. This ensures an elegant, non-abrupt experience across themes.
+
+✅ 13. Introduce keyboard navigation support  
+Add `tabIndex=0` and `role="button"` to all theme icons and Launch button. Use `onKeyDown` for Enter key triggering. This ensures keyboard accessibility and improves UX for all users.
+
+✅ 14. Replace icon in Modular Architecture  
+Replace current modular icon with Lucide’s `Puzzle` icon. This more clearly conveys “modular components” metaphor. Aligns symbol with semantic function.
+
+✅ 15. Organize homepage code structure  
+Ensure homepage is built with following components:
+- HeroSection.tsx → left brand section
+- FeatureStack.tsx → right card stack
+- FeatureCard.tsx → individual cards
+- BackgroundNeurons.tsx → dynamic background
+- LaunchButton.tsx, ThemeToggle.tsx
+Each component accepts props for responsive reuse and theme control.
+
+---
+
+# Beginner Assistant Integration Notes
+
+## Feature Overview
+Beginner-focused AI assistant enabling: code generation (with fenced block actions), selection improvement via diffs, inline commenting, explanations panel, model catalog, beginner presets, streaming, and lightweight telemetry.
+
+## Flow (Conceptual)
+User Prompt → (Beginner Mode Augment) → AI API → Stream Parser → Renderer (toolbar gating) → User Action → editorBridge / previewBridge → Monaco + Preview.
+
+## Key Modules
+- editorBridge: undo-safe insert/replace/new tab.
+- previewBridge: reveals preview & runs sandbox for HTML/CSS/JS.
+- CodeBlockWithActions: primary vs secondary fence toolbars.
+- telemetry: dev-only logs + batching + optional remote POST.
+- Monaco AI actions: Improve (diff modal), Explain (panel), Comment (inline).
+
+## Accessibility
+- aria-label on icon buttons; focus rings consistent.
+- Esc closes modals/panels restoring focus.
+- Reduced motion respected.
+
+## Guardrails
+- Sandboxed iframe only; no eval.
+- Diff fallback when parsing fails.
+- Redacted telemetry (no code/user text).
+- Retry toasts replace disruptive alerts.
+
+## Telemetry & Batching
+- timeAndLog wraps AI actions (latency, success, token estimate).
+- Batch flush (5s / 25) to console or endpoint (sendBeacon/fetch) with localStorage retry buffer.
+
+## Beginner Mode & Presets
+- Toggles prompt bias for single-file, commented solutions.
+- Presets (Calculator, Landing, Portfolio, Todo) persisted via localStorage.
+
+## Streaming
+- Placeholder for active fence; actions disabled until closing fence.
+- Prevents partial insertion & layout shift.
+
+## Known Limitations
+- Simplified diff applier (multi-hunk complexity limited).
+- Token estimate heuristic approximate.
+- Telemetry lacks exponential backoff.
+- A11y not yet covered by automated tooling.
+
+## Manual QA (Step 12)
+- Insert & Preview (HTML) success.
+- Replace Selection undo/redo OK.
+- Improve diff apply updates status bar.
+- Streaming stability & toolbar gating.
+- Keyboard Esc/focus validated.
+- Model switching stable.
+- Beginner outputs single-file + comments.
+
+## Future Enhancements
+- Rich diff parse, better hunk merging.
+- Formal test suite (Vitest) & axe a11y.
+- Server ingestion & privacy controls.
+- Model-specific token estimation.
+
+Last Updated: 2025-08-13

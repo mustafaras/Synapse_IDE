@@ -1,0 +1,52 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ai-assistant
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: ai-assistant
+  template:
+    metadata:
+      labels:
+        app: ai-assistant
+    spec:
+      containers:
+        - name: web
+          image: ghcr.io/OWNER/REPO:latest
+          ports:
+            - containerPort: 80
+          readinessProbe:
+            httpGet:
+              path: "/"
+              port: 80
+            initialDelaySeconds: 3
+          livenessProbe:
+            httpGet:
+              path: "/"
+              port: 80
+            initialDelaySeconds: 10
+          env:
+            - name: OPENAI_API_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: ai-secrets
+                  key: OPENAI_API_KEY
+            - name: ANTHROPIC_API_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: ai-secrets
+                  key: ANTHROPIC_API_KEY
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: ai-assistant
+spec:
+  type: LoadBalancer
+  selector:
+    app: ai-assistant
+  ports:
+    - port: 80
+      targetPort: 80

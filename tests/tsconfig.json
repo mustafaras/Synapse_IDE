@@ -1,0 +1,10 @@
+{
+  "extends": "../tsconfig.app.json",
+  "compilerOptions": {
+    "types": ["vitest/globals"],
+    "outDir": "../.tmp-tests",
+    "noEmit": true
+  },
+  "include": ["./**/*"],
+  "exclude": []
+}

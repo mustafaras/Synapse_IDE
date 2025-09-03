@@ -1,0 +1,14 @@
+services:
+  - type: web
+    name: ai-assistant
+    env: docker
+    plan: starter
+    autoDeploy: false
+    docker:
+      image: ghcr.io/OWNER/REPO:latest
+    healthCheckPath: /
+    envVars:
+      - key: OPENAI_API_KEY
+        sync: false
+      - key: ANTHROPIC_API_KEY
+        sync: false

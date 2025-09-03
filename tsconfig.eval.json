@@ -1,0 +1,16 @@
+{
+  "extends": "./tsconfig.app.json",
+  "compilerOptions": {
+    "noEmit": false,
+    "outDir": "dist",
+    "rootDir": "src",
+    "module": "ESNext",
+    "target": "ES2020",
+    "moduleResolution": "bundler",
+  "skipLibCheck": true,
+  "strict": true,
+  "forceConsistentCasingInFileNames": true
+  },
+  "include": ["src/eval/**/*.ts"],
+  "exclude": []
+}
