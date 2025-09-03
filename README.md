@@ -78,6 +78,8 @@ Highlights
 
 ## 2) Quickstart ⚡
 
+https://github.com/user-attachments/assets/d76c82e9-12dc-4311-9804-97f539fb96d0
+
 Prerequisites
 
 - Node.js 18+ recommended
@@ -804,5 +806,6 @@ Testing artifacts
 - `@radix-ui/react-*` for primitives (dialog, dropdown, tabs, toast)
 - `lucide-react` for icons
 - `framer-motion` for motion primitives
+
 
 
